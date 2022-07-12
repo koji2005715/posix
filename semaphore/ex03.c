@@ -14,13 +14,14 @@ int main()
   sem_t* sem;
   sem = sem_open("/hoge", O_CREAT, 0666, 0);
 
+  char msg[256];
+  sprintf(msg, "parent process(pid=%d)\n" , getpid());
+
   printf("before fork().\n");
   sem_wait(sem);		// P操作
 
   if((pid = fork()) == 0) {
-    // 子プロセス
-    char msg[256];
-    sprintf(msg, "critical section in child process(pid=%d)\n" , getpid());
+    sprintf(msg, "child process(pid=%d)\n" , getpid());
   
     sem_wait(sem);		// P操作
     slowPrint(msg, 100000);	// CS
@@ -28,10 +29,6 @@ int main()
 
     _exit(0);			// 子プロセス終了
   }
-
-  // 親プロセス
-  char msg[256];
-  sprintf(msg, "critical section in parent process(pid=%d)\n" , getpid());
 
   sem_wait(sem);		// P操作
   slowPrint(msg, 100000);	// CS
