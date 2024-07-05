@@ -1,5 +1,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <unistd.h>
 #include <string>
 #include "Monitor.h"
 #include "slowPrint.h"
