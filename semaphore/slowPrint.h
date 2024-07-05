@@ -1,1 +1,1 @@
-extern void slowPrint(const char *msg, int us);
+extern void slowPrint(const char *msg, unsigned int us);

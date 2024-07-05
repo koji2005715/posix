@@ -3,9 +3,7 @@ CC = gcc
 OPTIMIZE = -O
 
 CFLAGS = $(OPTIMIZE) -Wno-unused-result
-LFLAGS = 
-
-OBJS = $(SRCS:.c=.o)
+LDFLAGS = 
 
 TARGETS = file_basic fd
 
@@ -21,10 +19,10 @@ distclean::
 	rm -f *~ *.o core ${TARGETS}
 
 fd: fd.o
-	$(CC) -o $@ $^ $(LFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS)
 	strip $@
 
 file_basic: file_basic.o
-	$(CC) -o $@ $^ $(LFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS)
 	strip $@
 

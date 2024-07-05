@@ -3,9 +3,7 @@ CC = gcc
 OPTIMIZE = -O
 
 CFLAGS = $(OPTIMIZE) -Wno-unused-result
-LFLAGS = 
-
-OBJS = $(SRCS:.c=.o)
+LDFLAGS = 
 
 TARGETS = write read
 
@@ -21,9 +19,9 @@ distclean::
 	rm -f *~ *.o core ${TARGETS}
 
 write: write.o
-	$(CC) -o $@ $^ $(LFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS)
 	strip $@
 
 read: read.o
-	$(CC) -o $@ $^ $(LFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS)
 	strip $@

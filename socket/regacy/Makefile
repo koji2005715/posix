@@ -3,9 +3,7 @@ CC = gcc
 OPTIMIZE = -O
 
 CFLAGS = $(OPTIMIZE) -Wno-unused-result
-LFLAGS = 
-
-OBJS = $(SRCS:.c=.o)
+LDFLAGS = 
 
 TARGETS = server client
 
@@ -21,9 +19,9 @@ distclean::
 	rm -f *~ *.o core ${TARGETS}
 
 server: server.o
-	$(CC) -o $@ $^ $(LFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS)
 	strip $@
 
 client: client.o
-	$(CC) -o $@ $^ $(LFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS)
 	strip $@

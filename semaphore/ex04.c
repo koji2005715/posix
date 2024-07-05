@@ -19,7 +19,7 @@ int main()
 
   if((pid = fork()) == 0) {
     
-    sprintf(msg, "Here is child process after fork. Check name of process(pid=%d)\n", getpid());
+    sprintf(msg, "Here is child process after fork() before exec().\nWatch the name of process(pid=%d) in output of top command.\n", getpid());
 
     sem_wait(sem);		// P操作
     slowPrint(msg, 100000);	// CS
@@ -33,7 +33,7 @@ int main()
   }
 
   // 親プロセス
-  sprintf(msg, "parent process(pid=%d)\n" , getpid());
+  sprintf(msg, "Here is parent process(pid=%d).\n" , getpid());
 
   sem_wait(sem);		// P操作
   slowPrint(msg, 100000);	// CS
