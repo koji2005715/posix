@@ -25,8 +25,8 @@ int main()
     slowPrint(msg, 100000);	// CS
     sem_post(sem);		// V操作
 
-    sem_close(sem);
-    _exit(0);			// 子プロセス終了
+   // sem_close(sem);
+   // _exit(0);			// 子プロセス終了
   }
 
   // 親プロセス
